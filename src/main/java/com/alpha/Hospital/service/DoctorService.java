@@ -1,10 +1,11 @@
-package com.alpha.hospital.service;
+package com.alpha.Hospital.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
-import com.alpha.hospital.entity.Doctor;
-import com.alpha.hospital.repository.DoctorRepository;
+import com.alpha.Hospital.entity.Doctor;
+import com.alpha.Hospital.repository.DoctorRepository;
 
 @Service
 public class DoctorService {
@@ -20,6 +21,22 @@ public class DoctorService {
 	public Doctor finddoctor(int id) {
 		// TODO Auto-generated method stub
 		return dr.findById(id).get();
+	}
+
+	public void updatedoctor(int id, String newdname) {
+		
+		Doctor  d= dr.findById(id).get();
+		
+		d.setName(newdname);
+		
+		dr.save(d);
+		
+	}
+
+	public void deletedoctor(int id) {
+		
+		dr.deleteById(id);
+		
 	}
 
 }

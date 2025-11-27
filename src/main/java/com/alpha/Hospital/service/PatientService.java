@@ -1,12 +1,13 @@
-package com.alpha.hospital.service;
+package com.alpha.Hospital.service;
 
 import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alpha.hospital.entity.Patient;
-import com.alpha.hospital.repository.PatientRepository;
+import com.alpha.Hospital.entity.Patient;
+import com.alpha.Hospital.repository.PatientRepository;
 
 @Service
 public class PatientService {
@@ -24,5 +25,25 @@ public class PatientService {
 		
 		return pr.findById(id);
 	}
+
+	public void updatepatient(int id, String newname) {
+		
+		Patient p = pr.findById(id).get();
+		
+		p.setName(newname);
+		
+		pr.save(p);
+		
+	}
+
+	public void deletepatient(int id) {
+		
+		
+		pr.deleteById(id);
+		
+	}
+
+	
+	
 
 }

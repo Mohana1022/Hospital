@@ -1,6 +1,7 @@
-package com.alpha.hospital.entity;
+package com.alpha.Hospital.entity;
 
 import java.util.List;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

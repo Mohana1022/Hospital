@@ -1,9 +1,10 @@
-package com.alpha.hospital.repository;
+package com.alpha.Hospital.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+
 import org.springframework.stereotype.Repository;
 
-import com.alpha.hospital.entity.Doctor;
+import com.alpha.Hospital.entity.Doctor;
 
 @Repository
 public interface DoctorRepository  extends JpaRepository<Doctor, Integer>{
