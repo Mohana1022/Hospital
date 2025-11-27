@@ -1,4 +1,4 @@
-package com.alpha.Hospital.entity;
+package com.alpha.hospital.entity;
 
 import java.util.List;
 

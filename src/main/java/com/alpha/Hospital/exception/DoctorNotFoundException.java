@@ -1,4 +1,4 @@
-package com.alpha.Hospital.exception;
+package com.alpha.hospital.exception;
 
 public class DoctorNotFoundException {
 
