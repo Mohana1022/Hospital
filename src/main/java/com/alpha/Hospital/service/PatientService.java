@@ -2,6 +2,7 @@ package com.alpha.Hospital.service;
 
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +25,25 @@ public class PatientService {
 		
 		return pr.findById(id);
 	}
+
+	public void updatepatient(int id, String newname) {
+		
+		Patient p = pr.findById(id).get();
+		
+		p.setName(newname);
+		
+		pr.save(p);
+		
+	}
+
+	public void deletepatient(int id) {
+		
+		
+		pr.deleteById(id);
+		
+	}
+
+	
+	
 
 }

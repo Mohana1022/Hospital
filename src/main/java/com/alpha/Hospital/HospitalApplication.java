@@ -1,6 +1,7 @@
 package com.alpha.Hospital;
 
 import org.springframework.boot.SpringApplication;
+
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication

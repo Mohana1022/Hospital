@@ -1,6 +1,7 @@
 package com.alpha.Hospital.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import com.alpha.Hospital.entity.Doctor;
@@ -20,6 +21,22 @@ public class DoctorService {
 	public Doctor finddoctor(int id) {
 		// TODO Auto-generated method stub
 		return dr.findById(id).get();
+	}
+
+	public void updatedoctor(int id, String newdname) {
+		
+		Doctor  d= dr.findById(id).get();
+		
+		d.setName(newdname);
+		
+		dr.save(d);
+		
+	}
+
+	public void deletedoctor(int id) {
+		
+		dr.deleteById(id);
+		
 	}
 
 }

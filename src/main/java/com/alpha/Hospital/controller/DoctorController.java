@@ -1,8 +1,10 @@
 package com.alpha.Hospital.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,5 +27,17 @@ public class DoctorController {
 	@GetMapping("/finddoctor")
 	public Doctor finddoctor(@RequestParam int id) {
 		return ds.finddoctor(id);
+	}
+	
+	@PutMapping("/updatedoctor")
+	public void updatedoctor(@RequestParam int id, @RequestParam String newdname) {
+		ds.updatedoctor(id,newdname);
+	}
+	
+	@DeleteMapping("/deletedoctor")
+	public void deletedoctor(@RequestParam int id) {
+		
+		ds.deletedoctor(id);
+		
 	}
 }
