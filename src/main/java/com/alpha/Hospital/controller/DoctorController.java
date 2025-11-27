@@ -1,4 +1,4 @@
-package com.alpha.hospital.controller;
+package com.alpha.Hospital.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alpha.hospital.entity.Doctor;
-import com.alpha.hospital.service.DoctorService;
+import com.alpha.Hospital.entity.Doctor;
+import com.alpha.Hospital.service.DoctorService;
 
 @RestController
 public class DoctorController {
