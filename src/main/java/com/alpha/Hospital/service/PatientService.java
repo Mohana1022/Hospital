@@ -1,12 +1,12 @@
-package com.alpha.hospital.service;
+package com.alpha.Hospital.service;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alpha.hospital.entity.Patient;
-import com.alpha.hospital.repository.PatientRepository;
+import com.alpha.Hospital.entity.Patient;
+import com.alpha.Hospital.repository.PatientRepository;
 
 @Service
 public class PatientService {

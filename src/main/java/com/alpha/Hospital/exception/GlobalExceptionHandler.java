@@ -1,4 +1,4 @@
-package com.alpha.hospital.exception;
+package com.alpha.Hospital.exception;
 
 public class GlobalExceptionHandler {
 
