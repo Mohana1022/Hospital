@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alpha.Hospital.ResponceStructure;
 import com.alpha.Hospital.entity.Doctor;
+import com.alpha.Hospital.entity.Patient;
 import com.alpha.Hospital.service.DoctorService;
 
 @RestController
@@ -25,7 +27,11 @@ public class DoctorController {
 	}
 	
 	@GetMapping("/finddoctor")
-	public Doctor finddoctor(@RequestParam int id) {
+//	public Doctor finddoctor(@RequestParam int id) {
+//		return ds.finddoctor(id);
+//	}
+	
+	public ResponceStructure<Doctor> findDoctor(@RequestParam int id){
 		return ds.finddoctor(id);
 	}
 	

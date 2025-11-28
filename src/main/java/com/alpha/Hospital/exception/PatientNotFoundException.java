@@ -1,5 +1,10 @@
 package com.alpha.Hospital.exception;
 
-public class PatientNotFoundException {
-
+public class PatientNotFoundException extends RuntimeException {
+    
+	public PatientNotFoundException() {
+		super("Patient Not Found");
+	}
+	
+                            
 }

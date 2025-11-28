@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alpha.Hospital.ResponceStructure;
 import com.alpha.Hospital.entity.Patient;
 import com.alpha.Hospital.service.PatientService;
 
@@ -22,9 +23,13 @@ public class PatientController {
 		ps.savepatient(p);
 	}
 	
-	@GetMapping("findpatient")
-	public void findpatient(@RequestParam int id) {
-		ps.findpatient(id);
+	@GetMapping("/findpatient")
+//	public void findpatient(@RequestParam int id) {
+//		ps.findpatient(id);
+//	}
+	
+	public ResponceStructure<Patient> findpatient(@RequestParam int id){
+		return ps.findpatient(id);
 	}
 
 	
