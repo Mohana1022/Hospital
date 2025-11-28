@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alpha.Hospital.ResponceStructure;
+import com.alpha.Hospital.DTO.PatientDTO;
 import com.alpha.Hospital.entity.Patient;
 import com.alpha.Hospital.service.PatientService;
 
@@ -20,13 +21,19 @@ public class PatientController {
 	@Autowired
 	private PatientService ps;
 	
+//	@PostMapping("/savepatient")
+//	public void savepatient( @RequestBody Patient p) {
+//		ps.savepatient(p);
+//	}
+	
 	@PostMapping("/savepatient")
-	public void savepatient(@Valid @RequestBody Patient p) {
-		ps.savepatient(p);
+	public void savepatientdto( @RequestBody PatientDTO pdto) {
+		ps.savepatientdto(pdto);
 	}
 	
+	
 //	@GetMapping("/findpatient")
-//	public void findpatient(@RequestParam int id) {
+//	public void findpatient1(@Valid @RequestParam int id) {
 //		ps.findpatient(id);
 //	}
 	

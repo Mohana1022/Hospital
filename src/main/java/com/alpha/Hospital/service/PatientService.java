@@ -8,11 +8,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.alpha.Hospital.ResponceStructure;
+import com.alpha.Hospital.DTO.PatientDTO;
 import com.alpha.Hospital.entity.Patient;
 import com.alpha.Hospital.exception.PatientNotFoundException;
 import com.alpha.Hospital.repository.PatientRepository;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
+import jakarta.validation.Valid;
 
 @Service
 public class PatientService {
@@ -20,12 +22,22 @@ public class PatientService {
 	@Autowired
 	private PatientRepository pr;
 	
-	public void savepatient(Patient p) {
-		// TODO Auto-generated method stub
+//	public void savepatient(Patient p) {
+//		// TODO Auto-generated method stub
 //		pr.save(p);
-		
-		
+//		
+//		
+//	}
+	
+	public void savepatientdto(PatientDTO pdto) {
+		// TODO Auto-generated method stub
+		Patient p =new Patient();
+		p.setName(pdto.getName());
+		p.setAge(pdto.getAge());
+		p.setDisease(pdto.getDisease());
+		pr.save(p);
 	}
+
 
 	public ResponceStructure<Patient> findpatient(int id) {
 		// TODO Auto-generated method stub
@@ -81,6 +93,9 @@ public class PatientService {
 		
 		
 	}
+
+	
+	
 
 	
 	
