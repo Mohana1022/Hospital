@@ -16,11 +16,13 @@ public class DoctorService {
 	@Autowired
 	private DoctorRepository dr;
 	
+	
 	public void savedoctor(Doctor d) {
 		// TODO Auto-generated method stub
 		dr.save(d);
 	}
 
+	
 	public ResponceStructure<Doctor> finddoctor(int id) {
 		// TODO Auto-generated method stub
 		Doctor d = dr.findById(id).orElseThrow(()->new DoctorNotFoundException());
@@ -33,20 +35,47 @@ public class DoctorService {
 			return rs;
 	}
 
-	public void updatedoctor(int id, String newdname) {
+	
+	public ResponceStructure<Doctor> updatedoctor(int id, String newdname) {
 		
-		Doctor  d= dr.findById(id).get();
+//		Doctor  d= dr.findById(id).get();
+//		d.setName(newdname);
+//		dr.save(d);
 		
-		d.setName(newdname);
-		
-		dr.save(d);
+	    Doctor d = dr.findById(id).orElseThrow(() -> new DoctorNotFoundException());
+
+	   d.setName(newdname);
+	   dr.save(d);
+	
+	   ResponceStructure<Doctor> rs = new ResponceStructure<>();
+	   rs.setStatuscode(HttpStatus.FOUND.value());
+	   rs.setMessage("Doctor with id " + id + " updated successfully");
+	   rs.setData(d);
+	
+	   return rs;
 		
 	}
 
-	public void deletedoctor(int id) {
+	public ResponceStructure<String> deletedoctor(int id) 
+	{
 		
-		dr.deleteById(id);
+//		dr.deleteById(id);
 		
+		if (!dr.existsById(id)) 
+		{
+			throw new DoctorNotFoundException();
+			}
+	        
+			dr.deleteById(id);
+	
+	        ResponceStructure<String> rs = new ResponceStructure<>();
+	        rs.setStatuscode(HttpStatus.OK.value());
+	        rs.setMessage("Doctor deleted successfully");
+	        rs.setData("Doctor with id " + id + " deleted");
+	
+	        return rs;
+			
+		}
+
 	}
 
-}

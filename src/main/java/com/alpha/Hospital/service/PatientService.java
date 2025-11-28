@@ -36,20 +36,43 @@ public class PatientService {
 		return rs;
 	}
 
-	public void updatepatient(int id, String newname) {
+	public ResponceStructure<Patient> updatepatient(int id, String newname) {
 		
-		Patient p = pr.findById(id).get();
+//		Patient p = pr.findById(id).get();
+//		p.setName(newname);
+//		pr.save(p);
 		
-		p.setName(newname);
-		
-		pr.save(p);
+		Patient p = pr.findById(id).orElseThrow(() -> new PatientNotFoundException());
+        p.setName(newname);
+        pr.save(p);
+
+        ResponceStructure<Patient> rs = new ResponceStructure<Patient>();
+        rs.setStatuscode(HttpStatus.FOUND.value());
+        rs.setMessage("Patient with id " + id + " updated successfully");
+        rs.setData(p);
+
+        return rs;
+
 		
 	}
 
-	public void deletepatient(int id) {
+	public ResponceStructure<String> deletepatient(int id) {
 		
+//		pr.deleteById(id);
 		
-		pr.deleteById(id);
+		if (!pr.existsById(id)) {
+            throw new PatientNotFoundException();
+        }
+
+        pr.deleteById(id);
+
+        ResponceStructure<String> rs = new ResponceStructure<>();
+        rs.setStatuscode(HttpStatus.FOUND.value());
+        rs.setMessage("Patient deleted successfully");
+        rs.setData("Patient with id " + id + " deleted");
+
+        return rs;
+		
 		
 	}
 

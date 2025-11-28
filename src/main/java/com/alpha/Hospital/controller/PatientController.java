@@ -23,16 +23,16 @@ public class PatientController {
 		ps.savepatient(p);
 	}
 	
-	@GetMapping("/findpatient")
+//	@GetMapping("/findpatient")
 //	public void findpatient(@RequestParam int id) {
 //		ps.findpatient(id);
 //	}
 	
+	@GetMapping("/findpatient")
 	public ResponceStructure<Patient> findpatient(@RequestParam int id){
 		return ps.findpatient(id);
 	}
-
-	
+ 
 	@PutMapping("/updatepatient")
 	public void updatepatient(@RequestParam int id, @RequestParam String newname) {
 		ps.updatepatient(id,newname);
