@@ -1,10 +1,13 @@
 package com.alpha.Hospital.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import com.alpha.Hospital.ResponceStructure;
 import com.alpha.Hospital.entity.Doctor;
+import com.alpha.Hospital.entity.Patient;
+import com.alpha.Hospital.exception.DoctorNotFoundException;
 import com.alpha.Hospital.repository.DoctorRepository;
 
 @Service
@@ -18,9 +21,16 @@ public class DoctorService {
 		dr.save(d);
 	}
 
-	public Doctor finddoctor(int id) {
+	public ResponceStructure<Doctor> finddoctor(int id) {
 		// TODO Auto-generated method stub
-		return dr.findById(id).get();
+		Doctor d = dr.findById(id).orElseThrow(()->new DoctorNotFoundException());
+		 ResponceStructure<Doctor> rs = new ResponceStructure<Doctor>();
+			
+			rs.setStatuscode(HttpStatus.FOUND.value());
+			rs.setMessage("Doctor with id  " +id + "Found");
+			rs.setData(d);
+			
+			return rs;
 	}
 
 	public void updatedoctor(int id, String newdname) {

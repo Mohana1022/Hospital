@@ -4,9 +4,12 @@ import java.util.Optional;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import com.alpha.Hospital.ResponceStructure;
 import com.alpha.Hospital.entity.Patient;
+import com.alpha.Hospital.exception.PatientNotFoundException;
 import com.alpha.Hospital.repository.PatientRepository;
 
 @Service
@@ -20,10 +23,17 @@ public class PatientService {
 		pr.save(p);
 	}
 
-	public Optional<Patient> findpatient(int id) {
+	public ResponceStructure<Patient> findpatient(int id) {
 		// TODO Auto-generated method stub
 		
-		return pr.findById(id);
+		Patient p = pr.findById(id).orElseThrow(()->new PatientNotFoundException());
+        ResponceStructure<Patient> rs = new ResponceStructure<Patient>();
+		
+		rs.setStatuscode(HttpStatus.FOUND.value());
+		rs.setMessage("Patient with id  " +id + "Found");
+		rs.setData(p);
+		
+		return rs;
 	}
 
 	public void updatepatient(int id, String newname) {
