@@ -12,6 +12,8 @@ import com.alpha.Hospital.entity.Patient;
 import com.alpha.Hospital.exception.PatientNotFoundException;
 import com.alpha.Hospital.repository.PatientRepository;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
+
 @Service
 public class PatientService {
 
@@ -20,7 +22,9 @@ public class PatientService {
 	
 	public void savepatient(Patient p) {
 		// TODO Auto-generated method stub
-		pr.save(p);
+//		pr.save(p);
+		
+		
 	}
 
 	public ResponceStructure<Patient> findpatient(int id) {
@@ -45,14 +49,16 @@ public class PatientService {
 		Patient p = pr.findById(id).orElseThrow(() -> new PatientNotFoundException());
         p.setName(newname);
         pr.save(p);
-
+       
         ResponceStructure<Patient> rs = new ResponceStructure<Patient>();
         rs.setStatuscode(HttpStatus.FOUND.value());
         rs.setMessage("Patient with id " + id + " updated successfully");
         rs.setData(p);
+        
+        
 
         return rs;
-
+       
 		
 	}
 

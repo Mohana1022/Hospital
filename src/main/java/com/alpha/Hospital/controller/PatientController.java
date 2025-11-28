@@ -13,13 +13,15 @@ import com.alpha.Hospital.ResponceStructure;
 import com.alpha.Hospital.entity.Patient;
 import com.alpha.Hospital.service.PatientService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class PatientController {
 	@Autowired
 	private PatientService ps;
 	
 	@PostMapping("/savepatient")
-	public void savepatient(@RequestBody Patient p) {
+	public void savepatient(@Valid @RequestBody Patient p) {
 		ps.savepatient(p);
 	}
 	
@@ -29,17 +31,17 @@ public class PatientController {
 //	}
 	
 	@GetMapping("/findpatient")
-	public ResponceStructure<Patient> findpatient(@RequestParam int id){
+	public ResponceStructure<Patient> findpatient(@Valid @RequestParam int id){
 		return ps.findpatient(id);
 	}
  
 	@PutMapping("/updatepatient")
-	public void updatepatient(@RequestParam int id, @RequestParam String newname) {
+	public void updatepatient(@Valid @RequestParam int id, @Valid @RequestParam String newname) {
 		ps.updatepatient(id,newname);
 	}
 	
 	@DeleteMapping("/deletepatient")
-	public void deletepatient(@RequestParam int id) {
+	public void deletepatient(@Valid @RequestParam int id) {
 		
 		ps.deletepatient(id);
 		

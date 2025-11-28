@@ -14,6 +14,8 @@ import com.alpha.Hospital.entity.Doctor;
 import com.alpha.Hospital.entity.Patient;
 import com.alpha.Hospital.service.DoctorService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class DoctorController {
 
@@ -21,7 +23,7 @@ public class DoctorController {
 	private DoctorService ds;
 	
 	@PostMapping("/savedoctor")
-	public void savedoctor(@RequestBody Doctor d)
+	public void savedoctor(@Valid @RequestBody Doctor d)
 	{
 		ds.savedoctor(d);
 	}
@@ -31,17 +33,17 @@ public class DoctorController {
 //		return ds.finddoctor(id);
 //	}
 	
-	public ResponceStructure<Doctor> findDoctor(@RequestParam int id){
+	public ResponceStructure<Doctor> findDoctor(@Valid @RequestParam int id){
 		return ds.finddoctor(id);
 	}
 	
 	@PutMapping("/updatedoctor")
-	public void updatedoctor(@RequestParam int id, @RequestParam String newdname) {
+	public void updatedoctor(@Valid @RequestParam int id,@Valid @RequestParam String newdname) {
 		ds.updatedoctor(id,newdname);
 	}
 	
 	@DeleteMapping("/deletedoctor")
-	public void deletedoctor(@RequestParam int id) {
+	public void deletedoctor(@Valid @RequestParam int id) {
 		
 		ds.deletedoctor(id);
 		
